@@ -55,6 +55,9 @@ def is_openml(name):
 def get_openml_id(name):
     return int(name[7:])
 
+import torchvision.transforms as transforms
+from wilds import get_dataset
+
 def get_iwildcam(data_dir):
     dataset = get_dataset(dataset="iwildcam", download=True, root_dir=data_dir)
     train_data = dataset.get_subset('train', transform=transforms.Compose([transforms.ToTensor()]))
