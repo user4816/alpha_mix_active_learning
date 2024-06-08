@@ -730,7 +730,7 @@ if __name__ == "__main__":
                                                           'SVHN', 'CIFAR10',
                                                           'CIFAR100', 'MiniImageNet',
                                                           'domain_net-real', 'mini_domain_net-real', 'tiny_domain_net-real',
-                                                          'openml_6', 'openml_155'])
+                                                          'openml_6', 'openml_155', 'iwildcam'])
     parser.add_argument('--n_label', type=int, default=10, help='The number of distinct classes in the dataset.')
 
     parser.add_argument('--data_dir', type=str, default='./data')
