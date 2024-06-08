@@ -55,6 +55,13 @@ def is_openml(name):
 def get_openml_id(name):
     return int(name[7:])
 
+def get_iwildcam(data_dir):
+    dataset = get_dataset(dataset="iwildcam", download=True, root_dir=data_dir)
+    train_data = dataset.get_subset('train', transform=transforms.Compose([transforms.ToTensor()]))
+    val_data = dataset.get_subset('val', transform=transforms.Compose([transforms.ToTensor()]))
+    test_data = dataset.get_subset('test', transform=transforms.Compose([transforms.ToTensor()]))
+    return train_data, val_data, test_data
+
 
 def get_dataset(name, data_dir):
     if name == 'MNIST':
@@ -75,6 +82,8 @@ def get_dataset(name, data_dir):
         return get_Mini_DomainNet_Real(data_dir)
     elif name == 'tiny_domain_net-real':
         return get_Tiny_DomainNet_Real(data_dir)
+    elif name == 'iwildcam':
+        return get_iwildcam(data_dir)        
     elif is_openml(name):
         return get_openml(data_dir, get_openml_id(name))
 
